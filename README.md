@@ -1,1 +1,1 @@
-# PyQt5, PySide2
+# PyQt5, PySide2 sample
