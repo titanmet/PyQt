@@ -1,0 +1,28 @@
+[
+    {
+        "name": "Folder",
+        "content": []
+    },
+    {
+        "name": "Folder",
+        "content": [
+            {
+                "name": "Folder",
+                "content": [
+                    {
+                        "name": "Folder",
+                        "content": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Folder",
+        "content": []
+    },
+    {
+        "name": "Folder",
+        "content": []
+    }
+]
