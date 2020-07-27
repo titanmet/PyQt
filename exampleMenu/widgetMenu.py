@@ -1,5 +1,6 @@
 from PySide2.QtCore import *
 from PySide2.QtWidgets import *
+import button
 
 textArray = 'Click', 'Press', 'Enter'
 
@@ -8,7 +9,8 @@ class widgetMenuClass(QWidget):
     def __init__(self):
         super(widgetMenuClass, self).__init__()
         layout = QVBoxLayout(self)
-        self.btn = QPushButton('Click')
+        # self.btn = QPushButton('Click')
+        self.btn = button.myButtonClass('Click')
         layout.addWidget(self.btn)
         self.line = QLineEdit()
         layout.addWidget(self.line)
