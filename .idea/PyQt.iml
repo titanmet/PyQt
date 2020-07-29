@@ -5,6 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/projectManager" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/iconWidget" isTestSource="false" />
+    </content>
     <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
