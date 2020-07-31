@@ -3,8 +3,6 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 import os
 
-icon = os.path.join(os.path.dirname(__file__), 'drag.png')
-
 
 class dndWidgetClass(QListWidget):
     def __init__(self):
@@ -21,24 +19,18 @@ class dndWidgetClass(QListWidget):
                 self.addFile(f.toLocalFile())
 
     def dragEnterEvent(self, event):
-        if event.source() is self:
-            event.ignore()
+        mimedata = event.mimeData()
+        if mimedata.hasUrls():
+            event.accept()
         else:
-            mimedata = event.mimeData()
-            if mimedata.hasUrls():
-                event.accept()
-            else:
-                event.ignore()
+            event.ignore()
 
     def dragMoveEvent(self, event):
-        if event.source() is self:
-            event.ignore()
+        mimedata = event.mimeData()
+        if mimedata.hasUrls():
+            event.accept()
         else:
-            mimedata = event.mimeData()
-            if mimedata.hasUrls():
-                event.accept()
-            else:
-                event.ignore()
+            event.ignore()
 
     def startDrag(self, dropAction):
         drag = QDrag(self)
@@ -48,8 +40,6 @@ class dndWidgetClass(QListWidget):
             url.append(i.data(Qt.UserRole))
         mimedata.setUrls([QUrl.fromLocalFile(x) for x in url])
         drag.setMimeData(mimedata)
-        pix = QPixmap(icon)
-        drag.setPixmap(pix)
         result = drag.exec_()
         if result == Qt.DropAction.MoveAction:
             self.deleteSelected()
@@ -65,20 +55,6 @@ class dndWidgetClass(QListWidget):
             item.setText(os.path.basename(path))
             item.setData(Qt.UserRole, path)
             self.files.append(path)
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.MouseButton.RightButton:
-            pass
-        elif event.button() == Qt.MouseButton.LeftButton:
-            self.setDragDropMode(QAbstractItemView.NoDragDrop)
-            super(dndWidgetClass, self).mousePressEvent(event)
-        else:
-            self.setDragDropMode(QAbstractItemView.DragDrop)
-            super(dndWidgetClass, self).mousePressEvent(event)
-
-    def mouseReleaseEvent(self, event):
-        self.setDragDropMode(QAbstractItemView.DragDrop)
-        super(dndWidgetClass, self).mouseReleaseEvent(event)
 
 
 if __name__ == '__main__':
